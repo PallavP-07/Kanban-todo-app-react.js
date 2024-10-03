@@ -1,0 +1,104 @@
+/* General container styling */
+.container {
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    width: 100%;
+    /* Ensure the container takes up full width */
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+}
+.grid{
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.todo-column,
+.done-column {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+/* Ensure the columns take full height */
+.tasks {
+    margin-top: 15px;
+    min-height: 300px;
+}
+
+/* Task Cards */
+.task-card {
+    background-color: #e3f2fd;
+    border-left: 5px solid #42a5f5;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.task-card:hover {
+    background-color: #bbdefb;
+    transform: translateY(-3px);
+}
+
+/* Dragging effect */
+.dragging {
+    background-color: #e0e0e0;
+    opacity: 0.5;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #999;
+    box-shadow: none;
+    transform: scale(1.02);
+}
+
+/* Done tasks */
+.done-column .task-card {
+    background-color: #c8e6c9;
+    border-left: 5px solid #66bb6a;
+}
+
+.done-column .task-card:hover {
+    background-color: #a5d6a7;
+}
+
+/* Handle empty space during drag */
+.task-card.dragging::after {
+    content: '';
+    display: block;
+    height: 60px;
+    border: 1px dashed #ccc;
+}
+
+/* Ensure responsiveness on small screens */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        /* Single column on small screens */
+    }
+}
+
+/* Highlight drop areas when dragging */
+.todo-column:hover,
+.done-column:hover {
+  background-color: #f5f5f5;
+  border: 2px dashed #42a5f5;
+  transition: border-color 0.2s ease;
+}
+
+.todo-column.drag-over,
+.done-column.drag-over {
+  border: 2px solid #42a5f5;
+}
